@@ -53,6 +53,35 @@ a{
 a:hover{
   color: #ff8000;
 }
+ul{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+li{
+  margin-top: 1rem;
+}
+button{
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem black solid;
+  font-size: 1.4rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: darkgray;
+  cursor: pointer;
+  color: white;
+}
+button.primary{
+  background-color: black;
+}
+button.block{
+  width: 100%;
+}
+button:hover{
+  border: 0.1rem rgb(182, 180, 180) solid;
+}
 /*Header*/
 header a{
   color: white;
@@ -72,6 +101,15 @@ a.brand{
 .row.center{
   justify-content: center;
 }
+.row.top{
+  align-items: flex-start;
+}
+.col-1{
+  flex: 1 1 25rem;
+}
+.col-2{
+  flex: 2 1 50rem;
+}
 /*image*/
 img{
   border-radius: 0.5rem;
@@ -79,6 +117,9 @@ img{
 img.medium{
   max-width: 29rem;
   width: 100%;
+}
+img.large{
+  width:100%;
 }
 /*Card*/
 .card{
@@ -100,4 +141,14 @@ img.medium{
 .rating span{
   color:#f0c040;
   margin: 0.1rem;
+}
+.rating span:last-child{
+  color: black;
+}
+/*Alerts*/
+.success{
+  color: green;
+}
+.error{
+  color: red;
 }
