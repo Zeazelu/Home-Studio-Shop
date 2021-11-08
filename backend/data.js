@@ -6,7 +6,7 @@ const data = {
             category: 'Kurtki',
             image: '/images/p1.jpg',
             price: 250,
-            countInStock: 5,
+            countInStock: 0,
             brand: 'Home Studio',
             rating: 1,
             numReviews: 10,
