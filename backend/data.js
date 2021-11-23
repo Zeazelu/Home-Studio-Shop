@@ -14,14 +14,19 @@ const data = {
             password: bcrypt.hashSync('1234', 8),
             isAdmin: false,
         },
+        {
+            name: 'Magdalena',
+            email: 'magdalenasuliga0@gmail.com',
+            password: bcrypt.hashSync('danielmagda123', 8),
+            isAdmin: true,
+        }
     ],
     products: [
         {
-            _id: '1',
             name: 'Polar',
             category: 'Kurtki',
             image: '/images/p1.jpg',
-            price: 250,
+            price: 132,
             countInStock: 0,
             brand: 'Home Studio',
             rating: 1,
@@ -29,7 +34,6 @@ const data = {
             description: 'Polar pracowniczy'
         },
         {
-            _id: '2',
             name: 'Koszulka',
             category: 'Koszulki',
             image: '/images/p2.jpg',
@@ -41,7 +45,6 @@ const data = {
             description: 'Koszulka pracownicza'
         },
         {
-            _id: '3',
             name: 'Czapka',
             category: 'Czapki',
             image: '/images/p3.jpg',
@@ -53,7 +56,6 @@ const data = {
             description: 'Czapka pracownicza'
         },
         {
-            _id: '4',
             name: 'Ponczo',
             category: 'Morsowanie',
             image: '/images/p4.jpg',
@@ -65,7 +67,6 @@ const data = {
             description: 'Ponczo do morsowania'
         },
         {
-            _id: '5',
             name: 'Ręcznik',
             category: 'Morsowanie',
             image: '/images/p5.jpg',
@@ -77,7 +78,6 @@ const data = {
             description: 'Ręcznik do morsowania'
         },
         {
-            _id: '6',
             name: 'Komin',
             category: 'Morsowanie',
             image: '/images/p6.jpg',
@@ -89,7 +89,6 @@ const data = {
             description: 'Komin do morsowania'
         },
         {
-            _id: '7',
             name: 'Skarpety',
             category: 'Morsowanie',
             image: '/images/p7.jpg',
@@ -101,7 +100,6 @@ const data = {
             description: 'Ciepłe skarpety do morsowania'
         },
         {
-            _id: '8',
             name: 'Rękawice',
             category: 'Morsowanie',
             image: '/images/p8.jpg',
@@ -113,7 +111,6 @@ const data = {
             description: 'Ciepłe rękawice do morsowania'
         },
         {
-            _id: '9',
             name: 'Majtki',
             category: 'Morsowanie',
             image: '/images/p9.jpg',
