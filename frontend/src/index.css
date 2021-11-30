@@ -32,6 +32,7 @@ header{
 main{
   grid-area: main;
   padding: 1rem;
+  background-color: rgb(247, 244, 244);
 }
 footer{
   grid-area: footer;
@@ -46,6 +47,10 @@ h1{
 h2{
   font-size: 1.6rem;
   padding: 1rem 0;
+  color: black;
+}
+h2:hover{
+  color: #ff8000;
 }
 a{
   text-decoration: none;
@@ -60,6 +65,10 @@ ul{
 }
 li{
   margin-top: 1rem;
+  text-align: justify;
+}
+li > p{
+  font-weight: bold;
 }
 input,
 select,
@@ -129,9 +138,13 @@ a.brand{
 }
 .col-1{
   flex: 1 1 25rem;
+  margin-right: 5rem;
 }
 .col-2{
   flex: 2 1 50rem;
+}
+.col-3{
+  margin-left: 0.2rem;
 }
 .min-30{
   min-width: 30rem;
@@ -149,6 +162,9 @@ img.medium{
   width: 100%;
 }
 img.large{
+  border: 0.1rem black solid;
+  border-radius: 0.5rem;
+  max-width: 80rem;
   width:100%;
 }
 /*Card*/
@@ -217,6 +233,12 @@ img.large{
 }
 .form label{
   margin: 1rem 0;
+}
+.dimensions label{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 /* Dropdown */
 .dropdown {
