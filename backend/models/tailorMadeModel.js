@@ -7,12 +7,7 @@ const tailorMadeSchema = new mongoose.Schema(
     category: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
-    height: {type: Number, required: true},
-    width: {type: Number, required: true},
-    sleeveCircumference: {type: Number, required: true},
-    collarCircumference: {type: Number, required: true},
-    chestCircumference: {type: Number, required: true},
-    waistCircumference: {type: Number, required: true},
+    countInStock: { type: Number, required: true },
   },
   {
     timestamps: true,

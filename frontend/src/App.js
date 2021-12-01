@@ -22,6 +22,7 @@ import OrderListScreen from './screens/OrderListScreen';
 import ReadyProductsScreen from './screens/ReadyProductsScreen';
 import UserListScreen from './screens/UserListScreen';
 import TailorMadeScreen from './screens/TailorMadeProductsScreen';
+import TailormadeCartScreen from './screens/TailormadeCartScreen';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -46,19 +47,36 @@ function App() {
             <Link className="col-3" to="/readyproducts">
               GOTOWE PRODUKTY
             </Link>
-            </div>
-            <div>
+          </div>
+          <div>
             <Link className="col-3" to="/tailormade">
               PRODUKTY SZYTE NA MIARĘ
             </Link>
-            </div>
+          </div>
           <div>
-            <Link to="/cart">
-              Koszyk
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}
+            <div className="dropdown">
+            <Link to="#">
+                  Koszyk
             </Link>
+            <ul className="dropdown-content">
+              <li>
+                <Link to="/cart">
+                  Koszyk gotowych produktów
+                  {cartItems.length > 0 && (
+                    <span className="badge">{cartItems.length}</span>
+                  )}
+                </Link>
+                </li>
+                <li>
+                <Link to="/tailormadecart">
+                  Koszyk produktów szytych na miarę
+                  {cartItems.length > 0 && (
+                    <span className="badge">{cartItems.length}</span>
+                  )}
+                </Link>
+                </li>
+                </ul>
+            </div>
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
@@ -106,8 +124,9 @@ function App() {
         </header>
         <main>
           <Route path="/readyproducts" component={ReadyProductsScreen}></Route>
-          <Route path="/tailormade" component={TailorMadeScreen}exact></Route>
+          <Route path="/tailormade" component={TailorMadeScreen} exact></Route>
           <Route path="/tailormade/:id" component={TailorMade}></Route>
+          <Route path="/tailormadecart/:id?" component={TailormadeCartScreen}></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen} exact></Route>
           <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>

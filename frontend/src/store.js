@@ -9,6 +9,7 @@ import {
   productUpdateReducer,
   productDeleteReducer,
 } from './reducers/productReducers';
+import { tailormadeCartReducer } from './reducers/tailormadeCartReducers';
 import { tailormadeCreateReducer, tailormadeDeleteReducer, tailormadeDetailsReducer, tailormadeListReducer } from './reducers/tailorMadeReducers';
 import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer, userListReducer} from './reducers/userReducers';
 
@@ -24,11 +25,18 @@ const initialState = {
       : [],
       shippingAddress: localStorage.getItem('shippingAddress')? JSON.parse(localStorage.getItem('shippingAddress')) : {}, paymentMethod: 'PayPal',
   },
+  tailormadeCart: {
+    tailormadeCartItems: localStorage.getItem('tailormadeCartItems')
+    ? JSON.parse(localStorage.getItem('tailormadeCartItems'))
+    : [],
+    shippingAddress: localStorage.getItem('shippingAddress')? JSON.parse(localStorage.getItem('shippingAddress')) : {}, paymentMethod: 'PayPal',
+  },
 };
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  tailormadeCart: tailormadeCartReducer,
   userSignin: userSigninReducer,
   userRegister: userRegisterReducer,
   orderCreate: orderCreateReducer,

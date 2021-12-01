@@ -7,7 +7,7 @@ import MessageBox from '../components/MessageBox';
 export default function TailorMadeProducts(props) {
   const dispatch = useDispatch();
   const tailormadeId = props.match.params.id;
-  const [qty] = useState(1);
+  const [qty, setQty] = useState(1);
   const tailormadeDetails = useSelector((state) => state.tailormadeDetails);
   const { loading, error, tailormade } = tailormadeDetails;
 
@@ -15,8 +15,8 @@ export default function TailorMadeProducts(props) {
     dispatch(detailsTailorMade(tailormadeId));
   }, [dispatch, tailormadeId]);
 
-  const addToCartHandler = () => {
-    props.history.push(`/cart/${tailormadeId}?qty=${qty}`);
+  const addToTailormadeCartHandler = () => {
+    props.history.push(`/tailormadecart/${tailormadeId}?qty=${qty}`);
   };
   return (
     <div>
@@ -89,7 +89,7 @@ export default function TailorMadeProducts(props) {
                     id="collarCircumference"
                     placeholder="Obwód kołnierza..."
                     required
-                    //onChange={(e) => setEmail(e.target.value)}
+                  //onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
                 <div className="row">
@@ -100,7 +100,7 @@ export default function TailorMadeProducts(props) {
                     id="chestCircumference"
                     placeholder="Obwód klatki piersiowej..."
                     required
-                    //onChange={(e) => setEmail(e.target.value)}
+                  //onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
                 <div className="row">
@@ -111,7 +111,7 @@ export default function TailorMadeProducts(props) {
                     id="waistCircumference"
                     placeholder="Obwód w talii..."
                     required
-                    //onChange={(e) => setEmail(e.target.value)}
+                  //onChange={(e) => setEmail(e.target.value)}
                   ></input>
                 </div>
               </ul>
@@ -128,8 +128,40 @@ export default function TailorMadeProducts(props) {
                   <li>
                   </li>
                   <li>
-                    <button onClick={addToCartHandler} className="primary block">Dodaj do koszyka</button>
+                    <div className="row">
+                      <div>Status:</div>
+                      <div>
+                        {tailormade.countInStock > 0 ? (
+                          <span className="success">W magazynie</span>
+                        ) : (
+                          <span className="danger">Niedostępny</span>
+                        )}
+                      </div>
+                    </div>
                   </li>
+                  {
+                    tailormade.countInStock > 0 && (
+                      <>
+                        <li>
+                          <div className="row">
+                            <div>Ilość:</div>
+                            <div>
+                              <select value={qty} onChange={e => setQty(e.target.value)}>
+                                {
+                                  [...Array(tailormade.countInStock).keys()].map((x) => (
+                                    <option key={x + 1} value={x + 1}>{x + 1}</option>
+                                  ))
+                                }
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <button onClick={addToTailormadeCartHandler} className="primary block">Dodaj do koszyka</button>
+                        </li>
+                      </>
+                    )
+                  }
                 </ul>
               </div>
             </div>
