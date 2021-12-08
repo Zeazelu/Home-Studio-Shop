@@ -10,8 +10,9 @@ import {
   productDeleteReducer,
 } from './reducers/productReducers';
 import { tailormadeCartReducer } from './reducers/tailormadeCartReducers';
+import { tailormadeOrderCreateReducer, tailormadeOrderDeleteReducer, tailormadeOrderDeliverReducer, tailormadeOrderDetailsReducer, tailormadeOrderListReducer, tailormadeOrderMineListReducer, tailormadeOrderPayReducer } from './reducers/tailormadeOrderReducers';
 import { tailormadeCreateReducer, tailormadeDeleteReducer, tailormadeDetailsReducer, tailormadeListReducer } from './reducers/tailorMadeReducers';
-import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer, userListReducer} from './reducers/userReducers';
+import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer, userListReducer } from './reducers/userReducers';
 
 const initialState = {
   userSignin: {
@@ -23,25 +24,26 @@ const initialState = {
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [],
-      shippingAddress: localStorage.getItem('shippingAddress')? JSON.parse(localStorage.getItem('shippingAddress')) : {}, paymentMethod: 'PayPal',
+    shippingAddress: localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {}, paymentMethod: 'PayPal',
   },
   tailormadeCart: {
     tailormadeCartItems: localStorage.getItem('tailormadeCartItems')
-    ? JSON.parse(localStorage.getItem('tailormadeCartItems'))
-    : [],
-    shippingAddress: localStorage.getItem('shippingAddress')? JSON.parse(localStorage.getItem('shippingAddress')) : {}, paymentMethod: 'PayPal',
+      ? JSON.parse(localStorage.getItem('tailormadeCartItems'))
+      : [],
+    dimensions: localStorage.getItem('dimensions') ? JSON.parse(localStorage.getItem('dimensions')) : {},
+    tailormadeShippingAddress: localStorage.getItem('tailormadeShippingAddress') ? JSON.parse(localStorage.getItem('tailormadeShippingAddress')) : {}, paymentMethod: 'PayPal',
   },
 };
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
-  tailormadeCart: tailormadeCartReducer,
   userSignin: userSigninReducer,
   userRegister: userRegisterReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
+  tailormadeOrderPay: tailormadeOrderPayReducer,
   orderMineList: orderMineListReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
@@ -53,9 +55,16 @@ const reducer = combineReducers({
   orderDeliver: orderDeliverReducer,
   userList: userListReducer,
   tailormadeList: tailormadeListReducer,
+  tailormadeCart: tailormadeCartReducer,
   tailormadeDetails: tailormadeDetailsReducer,
   tailormadeDelete: tailormadeDeleteReducer,
   tailormadeCreate: tailormadeCreateReducer,
+  tailormadeOrderCreate: tailormadeOrderCreateReducer,
+  tailormadeOrderDetails: tailormadeOrderDetailsReducer,
+  tailormadeOrderDeliver: tailormadeOrderDeliverReducer,
+  tailormadeOrderDelete: tailormadeOrderDeleteReducer,
+  tailormadeOrderMineList: tailormadeOrderMineListReducer,
+  tailormadeOrderList: tailormadeOrderListReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

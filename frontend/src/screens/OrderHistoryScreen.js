@@ -8,37 +8,41 @@ export default function OrderHistoryScreen(props) {
     const orderMineList = useSelector(state => state.orderMineList);
     const { loading, error, orders } = orderMineList;
     const dispatch = useDispatch();
-    useEffect(() =>{
+    useEffect(() => {
         dispatch(listOrderMine());
     }, [dispatch]);
+
     return (
         <div>
-            <h1>Historia zamówień</h1>
-            {loading ? <LoadingBox></LoadingBox> : error ? (<MessageBox variant="danger">{error}</MessageBox>) : (<table className="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>DATA</th>
-                        <th>CENA</th>
-                        <th>OPŁACONO</th>
-                        <th>DOSTARCZONO</th>
-                        <th>AKCJE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order) => (
-                        <tr key={order._id}>
-                            <td>{order._id}</td>
-                            <td>{order.createdAt.substring(0, 10)}</td>
-                            <td>{order.totalPrice.toFixed(2)}zł</td>
-                            <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'Nie'}</td>
-                            <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : 'Nie'}</td>
-                            <td><button type="button" className="small" onClick={() => { props.history.push(`/order/${order._id}`) }}>Szczegóły</button></td>
+            <div>
+                <h1>Historia zamówień gotowych produktów</h1>
+                {loading ? <LoadingBox></LoadingBox> : error ? (<MessageBox variant="danger">{error}</MessageBox>) : (<table className="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>DATA</th>
+                            <th>CENA</th>
+                            <th>OPŁACONO</th>
+                            <th>DOSTARCZONO</th>
+                            <th>AKCJE</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            )}
+                    </thead>
+                    <tbody>
+                        {orders.map((order) => (
+                            <tr key={order._id}>
+                                <td>{order._id}</td>
+                                <td>{order.createdAt.substring(0, 10)}</td>
+                                <td>{order.totalPrice.toFixed(2)}zł</td>
+                                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'Nie'}</td>
+                                <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : 'Nie'}</td>
+                                <td><button type="button" className="small" onClick={() => { props.history.push(`/order/${order._id}`) }}>Szczegóły</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                )}
+            </div>
         </div>
+
     );
 }

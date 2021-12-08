@@ -1,4 +1,4 @@
-import { TAILORMADE_ADD_ITEM, TAILORMADE_EMPTY, TAILORMADE_REMOVE_ITEM, TAILORMADE_SAVE_PAYMENT_METHOD, TAILORMADE_SAVE_SHIPPING_ADDRESS, } from '../constants/tailormadeCartConstants';
+import { TAILORMADE_ADD_ITEM, TAILORMADE_EMPTY, TAILORMADE_REMOVE_ITEM, TAILORMADE_SAVE_DIMENSIONS, TAILORMADE_SAVE_PAYMENT_METHOD, TAILORMADE_SAVE_SHIPPING_ADDRESS, } from '../constants/tailormadeCartConstants';
 
 export const tailormadeCartReducer = (state = { tailormadeCartItems: [] }, action) => {
     switch (action.type) {
@@ -21,12 +21,16 @@ export const tailormadeCartReducer = (state = { tailormadeCartItems: [] }, actio
             };
         case TAILORMADE_SAVE_SHIPPING_ADDRESS:
             return {
-                ...state, shippingAddress: action.payload
+                ...state, tailormadeShippingAddress: action.payload
+            };
+        case TAILORMADE_SAVE_DIMENSIONS:
+            return {
+                ...state, dimensions: action.payload
             };
         case TAILORMADE_SAVE_PAYMENT_METHOD:
             return { ...state, paymentMethod: action.payload };
-            case TAILORMADE_EMPTY:
-                return { ...state, tailormadeCartItems: [] };
+        case TAILORMADE_EMPTY:
+            return { ...state, tailormadeCartItems: [] };
         default:
             return state;
     }

@@ -23,7 +23,7 @@ export default function TailormadeCartScreen(props) {
   };
 
   const checkoutHandler = () => {
-    props.history.push('/signin?redirect=shipping');
+    props.history.push('/signin?redirect=dimensions');
   };
   return (
     <div className="row top">
