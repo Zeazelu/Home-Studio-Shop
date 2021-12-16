@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
-import TailorMade from '../components/TailorMade';
+import Tailormade from '../components/Tailormade';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
-import { listTailorMade } from '../actions/tailorMadeActions';
+import { listTailormade } from '../actions/tailormadeActions';
 
-export default function TailorMadeScreen() {
+export default function TailormadeProductsScreen() {
 
   const dispatch = useDispatch();
   const tailormadeList = useSelector(state => state.tailormadeList);
   const {loading, error, tailormades} = tailormadeList;
 
   useEffect(() => {
-    dispatch(listTailorMade());
+    dispatch(listTailormade());
   }, [dispatch]);
   return (
     <div>
@@ -23,7 +23,7 @@ export default function TailorMadeScreen() {
       ) : (
         <div className="row center">
           {tailormades.map((tailormade) => (
-            <TailorMade key={tailormade._id} tailormade={tailormade}></TailorMade>
+            <Tailormade key={tailormade._id} tailormade={tailormade}></Tailormade>
           ))}
         </div>
       )}

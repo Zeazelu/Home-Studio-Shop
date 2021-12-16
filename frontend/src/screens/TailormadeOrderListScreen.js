@@ -43,6 +43,7 @@ export default function TailormadeOrderListScreen(props) {
               <th>KWOTA</th>
               <th>ZAPŁACONO</th>
               <th>DOSTARCZONO</th>
+              <th>WYMIARY</th>
               <th>AKCJE</th>
             </tr>
           </thead>
@@ -59,6 +60,7 @@ export default function TailormadeOrderListScreen(props) {
                     ? tailormadeorder.deliveredAt.substring(0, 10)
                     : 'Nie'}
                 </td>
+                <td>Wysokość:{tailormadeorder.dimensions.height}cm<br/>Klatka piersiowa:{tailormadeorder.dimensions.chestcircumference}cm<br/>Ramiona:{tailormadeorder.dimensions.shoulderwidth}cm<br/>Kołnierz:{tailormadeorder.dimensions.collarcircumference}cm<br />Talia:{tailormadeorder.dimensions.waistcircumference}cm<br />Rękawy:{tailormadeorder.dimensions.sleevecircumference}cm<br /></td>
                 <td>
                   <button
                     type="button"

@@ -1,4 +1,4 @@
-const { TAILORMADE_LIST_REQUEST, TAILORMADE_LIST_SUCCESS, TAILORMADE_LIST_FAIL, TAILORMADE_DETAILS_REQUEST, TAILORMADE_DETAILS_SUCCESS, TAILORMADE_DETAILS_FAIL, TAILORMADE_CREATE_REQUEST, TAILORMADE_CREATE_SUCCESS, TAILORMADE_CREATE_FAIL, TAILORMADE_CREATE_RESET, TAILORMADE_DELETE_REQUEST, TAILORMADE_DELETE_SUCCESS, TAILORMADE_DELETE_FAIL, TAILORMADE_DELETE_RESET } = require('../constants/tailorMadeConstants');
+const { TAILORMADE_LIST_REQUEST, TAILORMADE_LIST_SUCCESS, TAILORMADE_LIST_FAIL, TAILORMADE_DETAILS_REQUEST, TAILORMADE_DETAILS_SUCCESS, TAILORMADE_DETAILS_FAIL, TAILORMADE_CREATE_REQUEST, TAILORMADE_CREATE_SUCCESS, TAILORMADE_CREATE_FAIL, TAILORMADE_CREATE_RESET, TAILORMADE_DELETE_REQUEST, TAILORMADE_DELETE_SUCCESS, TAILORMADE_DELETE_FAIL, TAILORMADE_DELETE_RESET, TAILORMADE_UPDATE_REQUEST, TAILORMADE_UPDATE_SUCCESS, TAILORMADE_UPDATE_FAIL, TAILORMADE_UPDATE_RESET } = require('../constants/tailormadeConstants');
 export const tailormadeListReducer = (
     state = { loading: true, tailormades: [] },
     action
@@ -37,6 +37,21 @@ export const tailormadeCreateReducer = (state = {}, action) => {
       case TAILORMADE_CREATE_FAIL:
         return { loading: false, error: action.payload };
       case TAILORMADE_CREATE_RESET:
+        return {};
+      default:
+        return state;
+    }
+  };
+  
+  export const tailormadeUpdateReducer = (state = {}, action) => {
+    switch (action.type) {
+      case TAILORMADE_UPDATE_REQUEST:
+        return { loading: true };
+      case TAILORMADE_UPDATE_SUCCESS:
+        return { loading: false, success: true };
+      case TAILORMADE_UPDATE_FAIL:
+        return { loading: false, error: action.payload };
+      case TAILORMADE_UPDATE_RESET:
         return {};
       default:
         return state;

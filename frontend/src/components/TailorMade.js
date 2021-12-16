@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 
-export default function TailorMade(props) {
+export default function Tailormade(props) {
     const { tailormade } = props;
     return (
         <div key={tailormade._id} className="card">

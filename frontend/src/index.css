@@ -153,6 +153,7 @@ a.brand{
 img{
   border-radius: 0.5rem;
 }
+
 img.small{
   max-width: 5rem;
   width: 100%;
@@ -173,6 +174,12 @@ img.large{
   background-color: white;
   border-radius: 0.5rem;
   margin: 1rem;
+}
+.card:hover{
+  transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    z-index: 0;
 }
 .card-body{
   padding: 1rem;

@@ -76,7 +76,7 @@ export default function TailormadeOrderScreen(props) {
             <h1>Zamówienie: {tailormadeorder._id}</h1>
             <div className="row top">
                 <div className="col-2">
-                    <ul>
+                        <ul>
                         <li>
                             <div className="card card-body">
                                 <h2>Adres dostawy:</h2>
@@ -140,6 +140,21 @@ export default function TailormadeOrderScreen(props) {
                             </div>
                         </li>
                     </ul>
+                    <ul>
+                    <li>
+                            <div className="card card-body">
+                                <h2>Wymiary</h2>
+                                <p>
+                                    <strong>Długość [cm]:</strong> {tailormadeorder.dimensions.height}<br />
+                                    <strong>Obwód klatki piersiowej [cm]:</strong> {tailormadeorder.dimensions.chestcircumference}<br />
+                                    <strong>Szerokość w ramionach [cm]:</strong> {tailormadeorder.dimensions.shoulderwidth}<br />
+                                    <strong>Obwód kołnierza [cm]:</strong> {tailormadeorder.dimensions.collarcircumference}<br />
+                                    <strong>Obwód w talii [cm]:</strong> {tailormadeorder.dimensions.waistcircumference}<br />
+                                    <strong>Obwód rękawa [cm]:</strong> {tailormadeorder.dimensions.sleevecircumference}<br />
+                                </p>
+                            </div>
+                        </li>
+                        </ul>
                 </div>
                 <div className="col-1">
                     <div className="card card-body">

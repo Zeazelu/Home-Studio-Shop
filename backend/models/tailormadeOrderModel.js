@@ -8,7 +8,7 @@ const tailormadeOrderSchema = new mongoose.Schema({
         price: { type: Number, required: true },
         tailormade: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'TailorMade', required: true
+            ref: 'Tailormade', required: true
         },
     },
     ],

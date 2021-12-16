@@ -11,8 +11,8 @@ import {
 } from './reducers/productReducers';
 import { tailormadeCartReducer } from './reducers/tailormadeCartReducers';
 import { tailormadeOrderCreateReducer, tailormadeOrderDeleteReducer, tailormadeOrderDeliverReducer, tailormadeOrderDetailsReducer, tailormadeOrderListReducer, tailormadeOrderMineListReducer, tailormadeOrderPayReducer } from './reducers/tailormadeOrderReducers';
-import { tailormadeCreateReducer, tailormadeDeleteReducer, tailormadeDetailsReducer, tailormadeListReducer } from './reducers/tailorMadeReducers';
-import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer, userListReducer } from './reducers/userReducers';
+import { tailormadeCreateReducer, tailormadeDeleteReducer, tailormadeDetailsReducer, tailormadeListReducer, tailormadeUpdateReducer } from './reducers/tailormadeReducers';
+import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer, userListReducer, userDeleteReducer, userUpdateReducer,} from './reducers/userReducers';
 
 const initialState = {
   userSignin: {
@@ -43,7 +43,6 @@ const reducer = combineReducers({
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
-  tailormadeOrderPay: tailormadeOrderPayReducer,
   orderMineList: orderMineListReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
@@ -54,17 +53,21 @@ const reducer = combineReducers({
   orderDelete: orderDeleteReducer,
   orderDeliver: orderDeliverReducer,
   userList: userListReducer,
+  userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
   tailormadeList: tailormadeListReducer,
-  tailormadeCart: tailormadeCartReducer,
   tailormadeDetails: tailormadeDetailsReducer,
-  tailormadeDelete: tailormadeDeleteReducer,
-  tailormadeCreate: tailormadeCreateReducer,
+  tailormadeCart: tailormadeCartReducer,
   tailormadeOrderCreate: tailormadeOrderCreateReducer,
   tailormadeOrderDetails: tailormadeOrderDetailsReducer,
-  tailormadeOrderDeliver: tailormadeOrderDeliverReducer,
-  tailormadeOrderDelete: tailormadeOrderDeleteReducer,
+  tailormadeOrderPay: tailormadeOrderPayReducer,
   tailormadeOrderMineList: tailormadeOrderMineListReducer,
+  tailormadeCreate: tailormadeCreateReducer,
+  tailormadeUpdate: tailormadeUpdateReducer,
+  tailormadeDelete: tailormadeDeleteReducer,
   tailormadeOrderList: tailormadeOrderListReducer,
+  tailormadeOrderDelete: tailormadeOrderDeleteReducer,
+  tailormadeOrderDeliver: tailormadeOrderDeliverReducer,
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

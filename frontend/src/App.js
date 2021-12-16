@@ -12,7 +12,6 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductScreen from './screens/ProductScreen';
-import TailorMade from './screens/TailorMade';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
@@ -21,7 +20,6 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import ReadyProductsScreen from './screens/ReadyProductsScreen';
 import UserListScreen from './screens/UserListScreen';
-import TailorMadeScreen from './screens/TailorMadeProductsScreen';
 import TailormadeCartScreen from './screens/TailormadeCartScreen';
 import TailormadeShippingAddressScreen from './screens/TailormadeShippingAddressScreen';
 import DimensionsScreen from './screens/DimensionsScreen';
@@ -30,6 +28,11 @@ import TailormadePlaceOrderScreen from './screens/TailormadePlaceOrderScreen';
 import TailormadeOrderScreen from './screens/TailormadeOrderScreen';
 import TailormadeOrderListScreen from './screens/TailormadeOrderListScreen';
 import TailormadeOrderHistoryScreen from './screens/TailormadeOrderHistoryScreen';
+import TailormadeListScreen from './screens/TailormadeListScreen';
+import TailormadeEditScreen from './screens/TailormadeEditScreen';
+import TailormadeProductsScreen from './screens/TailormadeProductsScreen';
+import TailormadeProducts from './screens/Tailormade';
+import UserEditScreen from './screens/UserEditScreen';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -54,38 +57,28 @@ function App() {
             </Link>
           </div>
           <div>
-            <Link className="col-3" to="/readyproducts">
-              GOTOWE PRODUKTY
-            </Link>
-          </div>
-          <div>
-            <Link className="col-3" to="/tailormade">
-              PRODUKTY SZYTE NA MIARĘ
-            </Link>
-          </div>
-          <div>
             <div className="dropdown">
-            <Link to="#">
-                  Koszyk
-            </Link>
-            <ul className="dropdown-content">
-              <li>
-                <Link to="/cart">
-                  Gotowe produkty
-                  {cartItems.length > 0 && (
-                    <span className="badge">{cartItems.length}</span>
-                  )}
-                </Link>
+              <Link to="#">
+                Koszyk
+              </Link>
+              <ul className="dropdown-content">
+                <li>
+                  <Link to="/cart">
+                    Gotowe produkty
+                    {cartItems.length > 0 && (
+                      <span className="badge">{cartItems.length}</span>
+                    )}
+                  </Link>
                 </li>
                 <li>
-                <Link to="/tailormadecart">
-                  Produkty szyte na miarę
-                  {tailormadeCartItems.length > 0 && (
-                    <span className="badge">{tailormadeCartItems.length}</span>
-                  )}
-                </Link>
+                  <Link to="/tailormadecart">
+                    Produkty szyte na miarę
+                    {tailormadeCartItems.length > 0 && (
+                      <span className="badge">{tailormadeCartItems.length}</span>
+                    )}
+                  </Link>
                 </li>
-                </ul>
+              </ul>
             </div>
             {userInfo ? (
               <div className="dropdown">
@@ -101,7 +94,7 @@ function App() {
                   </li>
                   <li>
                     <Link to="/tailormadeorderhistory">Zamówione produkty szyte na miarę</Link>
-                    </li>
+                  </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
                       Wyloguj się
@@ -122,7 +115,10 @@ function App() {
                     <Link to="/dashboard">Panel</Link>
                   </li>
                   <li>
-                    <Link to="/productlist">Produkty</Link>
+                    <Link to="/productlist">Gotowe produkty</Link>
+                  </li>
+                  <li>
+                    <Link to="/tailormadelist">Produkty szyte na miarę</Link>
                   </li>
                   <li>
                     <Link to="/orderlist">Zamówione gotowe produkty</Link>
@@ -139,33 +135,34 @@ function App() {
           </div>
         </header>
         <main>
+          <Route path="/signin" component={SigninScreen}></Route>
+          <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/readyproducts" component={ReadyProductsScreen}></Route>
-          <Route path="/tailormade" component={TailorMadeScreen} exact></Route>
-          <Route path="/tailormade/:id" component={TailorMade}></Route>
-          <Route path="/tailormadecart/:id?" component={TailormadeCartScreen}></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen} exact></Route>
           <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
-          <Route path="/signin" component={SigninScreen}></Route>
-          <Route path="/register" component={RegisterScreen}></Route>
-          <Route path="/dimensions" component={DimensionsScreen}></Route>
           <Route path="/shipping" component={ShippingAddressScreen}></Route>
-          <Route path="/tailormadeshipping" component={TailormadeShippingAddressScreen}></Route>
           <Route path="/payment" component={PaymentMethodScreen}></Route>
-          <Route path="/tailormadepayment" component={tailormadePaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
-          <Route path="/placetailormadeorder" component={TailormadePlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
-          <Route path="/tailormadeorder/:id" component={TailormadeOrderScreen}></Route>
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+          <Route path="/tailormadeproducts" component={TailormadeProductsScreen}></Route>
+          <Route path="/tailormadecart/:id?" component={TailormadeCartScreen}></Route>
+          <Route path="/tailormade/:id" component={TailormadeProducts} exact></Route>
+          <Route path="/tailormade/:id/edit" component={TailormadeEditScreen} exact></Route>
+          <Route path="/dimensions" component={DimensionsScreen}></Route>
+          <Route path="/tailormadeshipping" component={TailormadeShippingAddressScreen}></Route>
+          <Route path="/tailormadepayment" component={tailormadePaymentMethodScreen}></Route>
+          <Route path="/placetailormadeorder" component={TailormadePlaceOrderScreen}></Route>
+          <Route path="/tailormadeorder/:id" component={TailormadeOrderScreen}></Route>
           <Route path="/tailormadeorderhistory" component={TailormadeOrderHistoryScreen}></Route>
-
           <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
           <AdminRoute path="/productlist" component={ProductListScreen}></AdminRoute>
           <AdminRoute path="/orderlist" component={OrderListScreen}></AdminRoute>
+          <AdminRoute path="/tailormadelist" component={TailormadeListScreen}></AdminRoute>
           <AdminRoute path="/tailormadeorderlist" component={TailormadeOrderListScreen}></AdminRoute>
-
           <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
+          <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">Wszystkie prawa zastrzeżone</footer>

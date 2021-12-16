@@ -16,7 +16,7 @@ export default function TailormadePlaceOrderScreen(props) {
     const {loading, success, error, tailormadeorder} = tailormadeOrderCreate;
     const toPrice = (num) => Number(num.toFixed(2));
     tailormadeCart.tailormadeItemsPrice = toPrice(tailormadeCart.tailormadeCartItems.reduce((a, c) => a + c.qty * c.price, 0));
-    tailormadeCart.shippingPrice = tailormadeCart.tailormadeItemsPrice > 100 ? toPrice(0) : toPrice(10);
+    tailormadeCart.shippingPrice = tailormadeCart.tailormadeItemsPrice > 100 ? toPrice(10) : toPrice(20);
     tailormadeCart.totalPrice = tailormadeCart.tailormadeItemsPrice + tailormadeCart.shippingPrice;
     const dispatch = useDispatch();
     const placeTailormadeOrderHandler = () =>{

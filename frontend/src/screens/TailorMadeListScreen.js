@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTailorMade, deleteTailorMade, listTailorMade } from '../actions/tailorMadeActions';
+import { createTailormade, listTailormade, deleteTailormade} from '../actions/tailormadeActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import { TAILORMADE_CREATE_RESET, TAILORMADE_DELETE_RESET } from '../constants/tailorMadeConstants';
+import { TAILORMADE_CREATE_RESET, TAILORMADE_DELETE_RESET} from '../constants/tailormadeConstants';
 
 
-export default function TailorMadeListScreen(props) {
+export default function TailormadeListScreen(props) {
   const tailormadeList = useSelector((state) => state.tailormadeList);
   const { loading, error, tailormades } = tailormadeList;
 
@@ -15,7 +15,7 @@ export default function TailorMadeListScreen(props) {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    tailormade: createdTailorMade,
+    tailormade: createdTailormade,
   } = tailormadeCreate;
 
   const tailormadeDelete = useSelector((state) => state.tailormadeDelete);
@@ -29,20 +29,20 @@ export default function TailorMadeListScreen(props) {
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: TAILORMADE_CREATE_RESET });
-      props.history.push(`/tailormade/${createdTailorMade._id}/edit`);
+      props.history.push(`/tailormade/${createdTailormade._id}/edit`);
     }
     if (successDelete) {
       dispatch({ type: TAILORMADE_DELETE_RESET });
     }
-    dispatch(listTailorMade());
-  }, [createdTailorMade, dispatch, props.history, successCreate, successDelete]);
+    dispatch(listTailormade());
+  }, [createdTailormade, dispatch, props.history, successCreate, successDelete]);
   const deleteHandler = (tailormade) => {
     if (window.confirm('Are you sure to delete?')) {
-      dispatch(deleteTailorMade(tailormade._id));
+      dispatch(deleteTailormade(tailormade._id));
     }
   };
   const createHandler = () => {
-    dispatch(createTailorMade());
+    dispatch(createTailormade());
   };
   return (
     <div>
@@ -68,7 +68,6 @@ export default function TailorMadeListScreen(props) {
               <th>NAZWA</th>
               <th>CENA</th>
               <th>KATEGORIA</th>
-              <th>MARKA</th>
               <th>AKCJA</th>
             </tr>
           </thead>

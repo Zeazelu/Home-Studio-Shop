@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { detailsTailorMade } from '../actions/tailorMadeActions';
+import { detailsTailormade } from '../actions/tailormadeActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
-export default function TailorMadeProducts(props) {
+export default function TailormadeProducts(props) {
   const dispatch = useDispatch();
   const tailormadeId = props.match.params.id;
   const [qty, setQty] = useState(1);
@@ -12,7 +12,7 @@ export default function TailorMadeProducts(props) {
   const { loading, error, tailormade } = tailormadeDetails;
 
   useEffect(() => {
-    dispatch(detailsTailorMade(tailormadeId));
+    dispatch(detailsTailormade(tailormadeId));
   }, [dispatch, tailormadeId]);
 
   const addToTailormadeCartHandler = () => {
