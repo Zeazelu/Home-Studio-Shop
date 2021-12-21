@@ -6,7 +6,7 @@ export const listTailormade = () => async (dispatch) => {
         type: TAILORMADE_LIST_REQUEST,
     });
     try {
-        const { data } = await Axios.get('/api/tailormade');
+        const { data } = await Axios.get('/api/tailormades');
         dispatch({ type: TAILORMADE_LIST_SUCCESS, payload: data });
     } catch (error) {
         dispatch({ type: TAILORMADE_LIST_FAIL, payload: error.message });
@@ -16,7 +16,7 @@ export const listTailormade = () => async (dispatch) => {
 export const detailsTailormade = (tailormadeId) => async (dispatch) => {
     dispatch({ type: TAILORMADE_DETAILS_REQUEST, payload: tailormadeId });
     try {
-        const { data } = await Axios.get(`/api/tailormade/${tailormadeId}`);
+        const { data } = await Axios.get(`/api/tailormades/${tailormadeId}`);
         dispatch({ type: TAILORMADE_DETAILS_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -36,7 +36,7 @@ export const createTailormade = () => async (dispatch, getState) => {
     } = getState();
     try {
       const { data } = await Axios.post(
-        '/api/tailormade',
+        '/api/tailormades',
         {},
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -61,7 +61,7 @@ export const createTailormade = () => async (dispatch, getState) => {
       userSignin: { userInfo },
     } = getState();
     try {
-      await Axios.delete(`/api/tailormade/${tailormadeId}`, {
+      await Axios.delete(`/api/tailormades/${tailormadeId}`, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: TAILORMADE_DELETE_SUCCESS });
@@ -80,7 +80,7 @@ export const createTailormade = () => async (dispatch, getState) => {
       userSignin: { userInfo },
     } = getState();
     try {
-      const { data } = await Axios.put(`/api/tailormade/${tailormade._id}`, tailormade, {
+      const { data } = await Axios.put(`/api/tailormades/${tailormade._id}`, tailormade, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: TAILORMADE_UPDATE_SUCCESS, payload: data });

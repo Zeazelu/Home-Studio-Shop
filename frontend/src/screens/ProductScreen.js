@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { detailsProduct } from '../actions/productActions';
+import { Link } from 'react-router-dom';
+import { createReview, detailsProduct } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
+import { PRODUCT_REVIEW_CREATE_RESET } from '../constants/productConstants';
 
 export default function ProductScreen(props) {
   const dispatch = useDispatch();
@@ -11,13 +13,41 @@ export default function ProductScreen(props) {
   const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
+  const productReviewCreate = useSelector((state) => state.productReviewCreate);
+  const {
+    loading: loadingReviewCreate,
+    error: errorReviewCreate,
+    success: successReviewCreate,
+  } = productReviewCreate;
+
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
 
   useEffect(() => {
+    if (successReviewCreate) {
+      window.alert('Komentarz dodany pomyślnie');
+      setRating('');
+      setComment('');
+      dispatch({ type: PRODUCT_REVIEW_CREATE_RESET });
+    }
     dispatch(detailsProduct(productId));
-  }, [dispatch, productId]);
+  }, [dispatch, productId, successReviewCreate]);
 
   const addToCartHandler = () =>{
     props.history.push(`/cart/${productId}?qty=${qty}`);
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (comment && rating) {
+      dispatch(
+        createReview(productId, { rating, comment, name: userInfo.name })
+      );
+    } else {
+      alert('Oceń oraz zostaw komentarz');
+    }
   };
   return (
     <div>
@@ -57,7 +87,7 @@ export default function ProductScreen(props) {
               </ul>
             </div>
             <div className="col-1">
-              <div className="card card-body">
+              <div className="cards cards-body">
                 <ul>
                   <li>
                     <div className="row">
@@ -100,10 +130,85 @@ export default function ProductScreen(props) {
                       </>
                     )
                   }
-
                 </ul>
               </div>
             </div>
+          </div>
+          <div>
+            <h2 id="reviews">Opinie</h2>
+            {product.reviews.length === 0 && (
+              <MessageBox>Brak opini</MessageBox>
+            )}
+            
+              <table className="table">
+          <thead>
+            <tr>
+              <th>NAZWA UŻYTKOWNIKA</th>
+              <th>OCENA</th>
+              <th>DATA</th>
+              <td>Komentarz</td>
+            </tr>
+          </thead>
+          <tbody>
+          {product.reviews.map((review) => (
+              <tr key={review._id}>
+                <td>{review.name}</td>
+                <td><Rating rating={review.rating} caption=" "></Rating></td>
+                <td>{review.createdAt.substring(0, 10)}</td>
+                <td>{review.comment}</td>
+              </tr>
+          ))}</tbody>
+        </table>
+              <li>
+                {userInfo ? (
+                  <form className="form" onSubmit={submitHandler}>
+                    <div>
+                      <h2>Napisz opinię o produkcie</h2>
+                    </div>
+                    <div>
+                      <label htmlFor="rating">Ocena</label>
+                      <select
+                        id="rating"
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}
+                      >
+                        <option value="">Wybierz...</option>
+                        <option value="1">1- Chujowy</option>
+                        <option value="2">2- niezły</option>
+                        <option value="3">3- Spoko</option>
+                        <option value="4">4- Bardzo dobry</option>
+                        <option value="5">5- Zajebisty</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="comment">Komentarz</label>
+                      <textarea
+                        id="comment"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label />
+                      <button className="primary" type="submit">
+                        Dodaj opinię
+                      </button>
+                    </div>
+                    <div>
+                      {loadingReviewCreate && <LoadingBox></LoadingBox>}
+                      {errorReviewCreate && (
+                        <MessageBox variant="danger">
+                          {errorReviewCreate}
+                        </MessageBox>
+                      )}
+                    </div>
+                  </form>
+                ) : (
+                  <MessageBox>
+                    Proszę <Link to="/signin">Zaloguj się</Link> aby dodać opinię
+                  </MessageBox>
+                )}
+              </li>
           </div>
         </div>
       )}

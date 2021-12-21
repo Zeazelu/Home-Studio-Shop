@@ -35,7 +35,7 @@ export default function TailormadePlaceOrderScreen(props) {
                 <div className="col-2">
                     <ul>
                         <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Adres dostawy:</h2>
                                 <p>
                                     <strong>Imię i nazwisko:</strong> {tailormadeCart.tailormadeShippingAddress.fullName} <br />
@@ -44,7 +44,7 @@ export default function TailormadePlaceOrderScreen(props) {
                             </div>
                         </li>
                         <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Płatność</h2>
                                 <p>
                                     <strong>Metoda płatności:</strong> {tailormadeCart.paymentMethod}
@@ -52,7 +52,7 @@ export default function TailormadePlaceOrderScreen(props) {
                             </div>
                         </li>
                         <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Wymiary</h2>
                                 <p>
                                     <strong>Długość [cm]:</strong> {tailormadeCart.dimensions.height}<br/>
@@ -65,7 +65,7 @@ export default function TailormadePlaceOrderScreen(props) {
                             </div>
                         </li>
                         <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Koszyk:</h2>
                                 <ul>
                                     {tailormadeCart.tailormadeCartItems.map((tailormadeItem) => (
@@ -94,7 +94,7 @@ export default function TailormadePlaceOrderScreen(props) {
 
                 </div>
                 <div className="col-1">
-                    <div className="card card-body">
+                    <div className="cards cards-body">
                         <ul>
                             <li>
                                 <h2>Podsumowanie</h2>

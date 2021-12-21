@@ -50,7 +50,7 @@ export default function TailormadeProducts(props) {
               </ul>
             </div>
             <div className="col-1">
-              <div className="card card-body">
+              <div className="cards cards-body">
                 <ul>
                   <li>
                     <div className="row">

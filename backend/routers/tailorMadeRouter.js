@@ -1,6 +1,5 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
-import data from '../data.js';
 import Tailormade from '../models/tailormadeModel.js';
 import { isAdmin, isAuth } from '../utils.js';
 
@@ -17,11 +16,11 @@ tailormadeRouter.get(
 tailormadeRouter.get(
     '/seed',
     expressAsyncHandler(async (req, res) => {
-        // await Product.remove({});
-        const createdTailormades = await Tailormade.insertMany(data.tailormades);
-        res.send({ createdTailormades });
+      // await Product.remove({});
+      const createdTailormades = await Tailormade.insertMany(tailormades);
+      res.send({ createdTailormades });
     })
-);
+  );
 
 tailormadeRouter.get(
     '/:id',
@@ -46,6 +45,7 @@ tailormadeRouter.post(
             price: 0,
             category: 'Kategoria',
             description: 'Opis',
+            countInStock: 0,
         });
         const createdTailormade = await tailormade.save();
         res.send({ message: 'Dodano produkt', product: createdTailormade });
@@ -64,6 +64,7 @@ tailormadeRouter.put(
             tailormade.price = req.body.price;
             tailormade.image = req.body.image;
             tailormade.category = req.body.category;
+            tailormade.countInStock = req.body.countInStock;
             tailormade.description = req.body.description;
             const updatedTailormade = await tailormade.save();
             res.send({ message: 'Produkt zaktualizowany', tailormade: updatedTailormade });

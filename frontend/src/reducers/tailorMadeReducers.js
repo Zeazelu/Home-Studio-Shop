@@ -29,19 +29,19 @@ export const tailormadeDetailsReducer = (state = { loading: true }, action) => {
 };
 
 export const tailormadeCreateReducer = (state = {}, action) => {
-    switch (action.type) {
-      case TAILORMADE_CREATE_REQUEST:
-        return { loading: true };
-      case TAILORMADE_CREATE_SUCCESS:
-        return { loading: false, success: true, tailormade: action.payload };
-      case TAILORMADE_CREATE_FAIL:
-        return { loading: false, error: action.payload };
-      case TAILORMADE_CREATE_RESET:
-        return {};
-      default:
-        return state;
-    }
-  };
+  switch (action.type) {
+    case TAILORMADE_CREATE_REQUEST:
+      return { loading: true };
+    case TAILORMADE_CREATE_SUCCESS:
+      return { loading: false, success: true, product: action.payload };
+    case TAILORMADE_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    case TAILORMADE_CREATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
   
   export const tailormadeUpdateReducer = (state = {}, action) => {
     switch (action.type) {

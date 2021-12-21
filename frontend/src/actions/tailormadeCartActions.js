@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { TAILORMADE_ADD_ITEM, TAILORMADE_REMOVE_ITEM, TAILORMADE_SAVE_DIMENSIONS, TAILORMADE_SAVE_PAYMENT_METHOD, TAILORMADE_SAVE_SHIPPING_ADDRESS } from '../constants/tailormadeCartConstants';
 
 export const tailormadeAddToCart = (tailormadeId, qty) => async (dispatch, getState) => {
-  const { data } = await Axios.get(`/api/tailormade/${tailormadeId}`);
+  const { data } = await Axios.get(`/api/tailormades/${tailormadeId}`);
   dispatch({
     type: TAILORMADE_ADD_ITEM,
     payload: {

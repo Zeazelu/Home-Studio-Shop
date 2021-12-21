@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTailormade, listTailormade, deleteTailormade} from '../actions/tailormadeActions';
+import { createTailormade, listTailormade, deleteTailormade } from '../actions/tailormadeActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import { TAILORMADE_CREATE_RESET, TAILORMADE_DELETE_RESET} from '../constants/tailormadeConstants';
+import { TAILORMADE_CREATE_RESET, TAILORMADE_DELETE_RESET } from '../constants/tailormadeConstants';
 
 
 export default function TailormadeListScreen(props) {
@@ -37,7 +37,7 @@ export default function TailormadeListScreen(props) {
     dispatch(listTailormade());
   }, [createdTailormade, dispatch, props.history, successCreate, successDelete]);
   const deleteHandler = (tailormade) => {
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm('Czy na pewno usunąć produkt?')) {
       dispatch(deleteTailormade(tailormade._id));
     }
   };
@@ -46,7 +46,7 @@ export default function TailormadeListScreen(props) {
   };
   return (
     <div>
-            <div className="row">
+      <div className="row">
         <h1>Produkty</h1>
         <button type="button" className="primary" onClick={createHandler}>
           Dodaj produkt

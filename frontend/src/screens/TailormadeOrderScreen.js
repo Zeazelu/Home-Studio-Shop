@@ -78,7 +78,7 @@ export default function TailormadeOrderScreen(props) {
                 <div className="col-2">
                         <ul>
                         <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Adres dostawy:</h2>
                                 <p>
                                     <strong>Imię i nazwisko:</strong> {tailormadeorder.tailormadeShippingAddress.fullName} <br />
@@ -97,7 +97,7 @@ export default function TailormadeOrderScreen(props) {
                             </div>
                         </li>
                         <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Płatność</h2>
                                 <p>
                                     <strong>Metoda płatności:</strong> {tailormadeorder.paymentMethod}
@@ -112,7 +112,7 @@ export default function TailormadeOrderScreen(props) {
                             </div>
                         </li>
                         <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Zamówione przedmioty</h2>
                                 <ul>
                                     {tailormadeorder.tailormadeOrderItems.map((tailormadeItem) => (
@@ -142,7 +142,7 @@ export default function TailormadeOrderScreen(props) {
                     </ul>
                     <ul>
                     <li>
-                            <div className="card card-body">
+                            <div className="cards cards-body">
                                 <h2>Wymiary</h2>
                                 <p>
                                     <strong>Długość [cm]:</strong> {tailormadeorder.dimensions.height}<br />
@@ -157,7 +157,7 @@ export default function TailormadeOrderScreen(props) {
                         </ul>
                 </div>
                 <div className="col-1">
-                    <div className="card card-body">
+                    <div className="cards cards-body">
                         <ul>
                             <li>
                                 <h2>Podsumowanie zamówienia</h2>
