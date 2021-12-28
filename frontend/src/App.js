@@ -62,12 +62,37 @@ function App() {
   useEffect(() => {
     dispatch(listProductCategories());
   }, [dispatch]);
+
+  const [isNavVisible, setNavVisibility] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 700px)");
+    mediaQuery.addListener(handleMediaQueryChange);
+    handleMediaQueryChange(mediaQuery);
+    return () => {
+      mediaQuery.removeListener(handleMediaQueryChange);
+    };
+  }, []);
+
+  const handleMediaQueryChange = mediaQuery => {
+    if (mediaQuery.matches) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  };
+
+  const toggleNav = () => {
+    setNavVisibility(!isNavVisible);
+  };
   return (
     <BrowserRouter>
       <div className="grid-container">
-        <header className="row">
+        <header className='row'>
+          
           <div>
-          <button
+            <button
               type="button"
               className="open-sidebar"
               onClick={() => setSidebarIsOpen(true)}
@@ -161,7 +186,9 @@ function App() {
                 </ul>
               </div>
             )}
+
           </div>
+          
         </header>
         <aside className={sidebarIsOpen ? 'open' : ''}>
           <ul className="categories">
@@ -183,7 +210,7 @@ function App() {
                   >
                     {c}
                   </Link>
-                  
+
                 </button>
               ))
             )}

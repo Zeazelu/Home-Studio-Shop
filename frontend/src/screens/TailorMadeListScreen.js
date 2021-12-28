@@ -29,7 +29,7 @@ export default function TailormadeListScreen(props) {
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: TAILORMADE_CREATE_RESET });
-      props.history.push(`/tailormade/${createdTailormade._id}/edit`);
+      props.history.push(`/tailormadelist`);
     }
     if (successDelete) {
       dispatch({ type: TAILORMADE_DELETE_RESET });

@@ -126,7 +126,7 @@ export default function TailormadeOrderScreen(props) {
                                                     ></img>
                                                 </div>
                                                 <div className="min-30">
-                                                    <Link to={`/tailormadeproduct/${tailormadeItem.tailormade}`}>
+                                                    <Link to={`/tailormadeproducts/${tailormadeItem.tailormade}`}>
                                                         {tailormadeItem.name}
                                                     </Link>
                                                 </div>
