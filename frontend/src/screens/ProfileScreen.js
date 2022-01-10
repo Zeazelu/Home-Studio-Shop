@@ -56,7 +56,7 @@ export default function ProfileScreen() {
                         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
                         {successUpdate && <MessageBox variant="success">Zmieniono dane pomyślnie</MessageBox>}
                         <div>
-                            <label htmlFor="name">Imię:</label>
+                            <label htmlFor="name">Nazwa użytkownika:</label>
                             <input
                                 id="name"
                                 type="text"

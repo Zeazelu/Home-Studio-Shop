@@ -20,7 +20,7 @@ export default function TailormadeOrderListScreen(props) {
     dispatch(listTailormadeOrders());
   }, [dispatch, successDelete]);
   const deleteTailormadeHandler = (tailormadeorder) => {
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm('Czy na pewno usunąć?')) {
         dispatch(deleteTailormadeOrder(tailormadeorder._id));
       }
   };

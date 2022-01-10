@@ -17,10 +17,11 @@ export default function DimensionsScreen(props) {
     const [chestcircumference, setChestcircumference] = useState(dimensions.chestcircumference);
     const [waistcircumference, setWaistcircumference] = useState(dimensions.waistcircumference);
     const [sleevecircumference, setSleevecircumference] = useState(dimensions.sleevecircumference);
+    const [hipcircumference, setHipcircumference] = useState(dimensions.hipcircumference);
     const dispatch = useDispatch();
     const submitHandler = (e) =>{
         e.preventDefault();
-        dispatch(saveDimensions({height, shoulderwidth, collarcircumference, chestcircumference, waistcircumference, sleevecircumference}));
+        dispatch(saveDimensions({height, shoulderwidth, collarcircumference, chestcircumference, waistcircumference, sleevecircumference, hipcircumference}));
     props.history.push('/tailormadeshipping');
     };
     return (
@@ -35,10 +36,6 @@ export default function DimensionsScreen(props) {
                     <input type="number" min="1" step="0.1" id="height" placeholder="Wpisz długość [cm]..." value={height} onChange={(e) => setHeight(e.target.value)} required></input>
                 </div>
                 <div>
-                    <label htmlFor="chestCircumference">Obwód klatki piersiowej [cm]:</label>
-                    <input type="number" min="1" step="0.1" id="chestcircumference" placeholder="Wpisz Obwód klatki piersiowej [cm]..." value={chestcircumference} onChange={(e) => setChestcircumference(e.target.value)} required></input>
-                </div>
-                <div>
                     <label htmlFor="shoulderwidth">Szerokość w ramionach [cm]:</label>
                     <input type="number" min="1" step="0.1" id="shoulderwidth" placeholder="Wpisz szerokość w ramionach [cm]..." value={shoulderwidth} onChange={(e) => setShoulderwidth(e.target.value)} required></input>
                 </div>
@@ -47,12 +44,20 @@ export default function DimensionsScreen(props) {
                     <input type="number" min="1" step="0.1" id="collarcircumference" placeholder="Wpisz Obwód kołnierza [cm]..." value={collarcircumference} onChange={(e) => setCollarcircumference(e.target.value)} required></input>
                 </div>
                 <div>
+                    <label htmlFor="chestCircumference">Obwód klatki piersiowej [cm]:</label>
+                    <input type="number" min="1" step="0.1" id="chestcircumference" placeholder="Wpisz Obwód klatki piersiowej [cm]..." value={chestcircumference} onChange={(e) => setChestcircumference(e.target.value)} required></input>
+                </div>
+                <div>
                     <label htmlFor="waistcircumference">Obwód w talii [cm]:</label>
                     <input type="number" min="1" step="0.1" id="waistcircumference" placeholder="Wpisz Obwód w talii [cm]..." value={waistcircumference} onChange={(e) => setWaistcircumference(e.target.value)} required></input>
                 </div>
                 <div>
                     <label htmlFor="sleevecircumference">Obwód rękawa [cm]:</label>
                     <input type="number" min="1" step="0.1" id="sleevecircumference" placeholder="Wpisz Obwód rękawa [cm]..." value={sleevecircumference} onChange={(e) => setSleevecircumference(e.target.value)} required></input>
+                </div>
+                <div>
+                    <label htmlFor="hipcircumference">Obwód bioder [cm]:</label>
+                    <input type="number" min="1" step="0.1" id="hipcircumference" placeholder="Wpisz obwód bioder [cm]..." value={hipcircumference} onChange={(e) => setHipcircumference(e.target.value)} required></input>
                 </div>
                 <div>
                     <label/>

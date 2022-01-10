@@ -26,6 +26,7 @@ const tailormadeOrderSchema = new mongoose.Schema({
         chestcircumference: { type: Number, required: true },
         waistcircumference: { type: Number, required: true },
         sleevecircumference: { type: Number, required: true },
+        hipcircumference: { type: Number, required: true },
     },
     paymentMethod: { type: String, required: true },
     paymentResult: {

@@ -20,7 +20,6 @@ export default function SigninScreen(props) {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    // TODO: sign in action
     dispatch(signin(email, password));
   };
   useEffect(() => {
