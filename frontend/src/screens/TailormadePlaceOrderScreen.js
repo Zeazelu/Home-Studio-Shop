@@ -13,19 +13,19 @@ export default function TailormadePlaceOrderScreen(props) {
         props.history.push('/payment');
     }
     const tailormadeOrderCreate = useSelector((state) => state.tailormadeOrderCreate);
-    const {loading, success, error, tailormadeorder} = tailormadeOrderCreate;
+    const { loading, success, error, tailormadeorder } = tailormadeOrderCreate;
     const toPrice = (num) => Number(num.toFixed(2));
     tailormadeCart.tailormadeItemsPrice = toPrice(tailormadeCart.tailormadeCartItems.reduce((a, c) => a + c.qty * c.price, 0));
     tailormadeCart.shippingPrice = tailormadeCart.tailormadeItemsPrice > 100 ? toPrice(10) : toPrice(20);
     tailormadeCart.totalPrice = tailormadeCart.tailormadeItemsPrice + tailormadeCart.shippingPrice;
     const dispatch = useDispatch();
-    const placeTailormadeOrderHandler = () =>{
-        dispatch(createTailormadeOrder({...tailormadeCart, tailormadeOrderItems: tailormadeCart.tailormadeCartItems}));
+    const placeTailormadeOrderHandler = () => {
+        dispatch(createTailormadeOrder({ ...tailormadeCart, tailormadeOrderItems: tailormadeCart.tailormadeCartItems }));
     };
-    useEffect(()=>{
-        if(success) {
+    useEffect(() => {
+        if (success) {
             props.history.push(`/tailormadeorder/${tailormadeorder._id}`);
-            dispatch({type: TAILOR_ORDER_CREATE_RESET});
+            dispatch({ type: TAILOR_ORDER_CREATE_RESET });
         }
     }, [dispatch, tailormadeorder, props.history, success]);
     return (
@@ -55,12 +55,15 @@ export default function TailormadePlaceOrderScreen(props) {
                             <div className="cards cards-body">
                                 <h2>Wymiary</h2>
                                 <p>
-                                    <strong>Długość [cm]:</strong> {tailormadeCart.dimensions.height}<br/>
-                                    <strong>Obwód klatki piersiowej [cm]:</strong> {tailormadeCart.dimensions.chestcircumference}<br/>
-                                    <strong>Szerokość w ramionach [cm]:</strong> {tailormadeCart.dimensions.shoulderwidth}<br/>
-                                    <strong>Obwód kołnierza [cm]:</strong> {tailormadeCart.dimensions.collarcircumference}<br/>
-                                    <strong>Obwód w talii [cm]:</strong> {tailormadeCart.dimensions.waistcircumference}<br/>
-                                    <strong>Obwód rękawa [cm]:</strong> {tailormadeCart.dimensions.sleevecircumference}<br/>
+                                    <strong>Długość:</strong> {tailormadeCart.dimensions.height}cm<br />
+                                    <strong>Obwód klatki piersiowej:</strong> {tailormadeCart.dimensions.chestcircumference}cm<br />
+                                    <strong>Obwód kołnierza:</strong> {tailormadeCart.dimensions.collarcircumference}cm<br />
+                                    <strong>Szerokość w ramionach:</strong> {tailormadeCart.dimensions.shoulderwidth}cm<br />
+                                    <strong>Obwód w talii:</strong> {tailormadeCart.dimensions.waistcircumference}cm<br />
+                                    <strong>Obwód rękawa:</strong> {tailormadeCart.dimensions.sleevecircumference}cm<br />
+                                    <strong>Długość rękawa:</strong> {tailormadeCart.dimensions.sleevelenght}cm<br />
+                                    <strong>Obwód bioder:</strong> {tailormadeCart.dimensions.hipcircumference}cm<br />
+                                    
                                 </p>
                             </div>
                         </li>
@@ -84,9 +87,9 @@ export default function TailormadePlaceOrderScreen(props) {
                                                 <div>{tailormadeItem.qty} x {tailormadeItem.price}zł = {tailormadeItem.qty * tailormadeItem.price}zł</div>
                                             </div>
                                         </li>
-                                        
+
                                     ))}
-                                    
+
                                 </ul>
                             </div>
                         </li>
@@ -120,8 +123,8 @@ export default function TailormadePlaceOrderScreen(props) {
                             <li>
                                 <button type="button" onClick={placeTailormadeOrderHandler} className="primary block" disabled={tailormadeCart.tailormadeCartItems.length === 0}>Złóż zamówienie</button>
                             </li>
-                                {loading && <LoadingBox></LoadingBox>}
-                                {error && <MessageBox variant="danger">{error}</MessageBox>}
+                            {loading && <LoadingBox></LoadingBox>}
+                            {error && <MessageBox variant="danger">{error}</MessageBox>}
                         </ul>
                     </div>
                 </div>

@@ -16,12 +16,13 @@ export default function DimensionsScreen(props) {
     const [collarcircumference, setCollarcircumference] = useState(dimensions.collarcircumference);
     const [chestcircumference, setChestcircumference] = useState(dimensions.chestcircumference);
     const [waistcircumference, setWaistcircumference] = useState(dimensions.waistcircumference);
+    const [sleevelenght, setSleevelenght] = useState(dimensions.sleevelenght);
     const [sleevecircumference, setSleevecircumference] = useState(dimensions.sleevecircumference);
     const [hipcircumference, setHipcircumference] = useState(dimensions.hipcircumference);
     const dispatch = useDispatch();
     const submitHandler = (e) =>{
         e.preventDefault();
-        dispatch(saveDimensions({height, shoulderwidth, collarcircumference, chestcircumference, waistcircumference, sleevecircumference, hipcircumference}));
+        dispatch(saveDimensions({height, shoulderwidth, collarcircumference, chestcircumference, waistcircumference, sleevelenght, sleevecircumference, hipcircumference}));
     props.history.push('/tailormadeshipping');
     };
     return (
@@ -50,6 +51,10 @@ export default function DimensionsScreen(props) {
                 <div>
                     <label htmlFor="waistcircumference">Obwód w talii [cm]:</label>
                     <input type="number" min="1" step="0.1" id="waistcircumference" placeholder="Wpisz Obwód w talii [cm]..." value={waistcircumference} onChange={(e) => setWaistcircumference(e.target.value)} required></input>
+                </div>
+                <div>
+                    <label htmlFor="sleevelenght">Długość rękawa [cm]:</label>
+                    <input type="number" min="1" step="0.1" id="sleevelenght" placeholder="Wpisz długość rękawa [cm]..." value={sleevelenght} onChange={(e) => setSleevelenght(e.target.value)} required></input>
                 </div>
                 <div>
                     <label htmlFor="sleevecircumference">Obwód rękawa [cm]:</label>

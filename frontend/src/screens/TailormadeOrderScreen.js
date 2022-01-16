@@ -146,11 +146,13 @@ export default function TailormadeOrderScreen(props) {
                                 <h2>Wymiary</h2>
                                 <p>
                                     <strong>Długość [cm]:</strong> {tailormadeorder.dimensions.height}<br />
-                                    <strong>Obwód klatki piersiowej [cm]:</strong> {tailormadeorder.dimensions.chestcircumference}<br />
                                     <strong>Szerokość w ramionach [cm]:</strong> {tailormadeorder.dimensions.shoulderwidth}<br />
                                     <strong>Obwód kołnierza [cm]:</strong> {tailormadeorder.dimensions.collarcircumference}<br />
+                                    <strong>Obwód klatki piersiowej [cm]:</strong> {tailormadeorder.dimensions.chestcircumference}<br />
                                     <strong>Obwód w talii [cm]:</strong> {tailormadeorder.dimensions.waistcircumference}<br />
+                                    <strong>Długość rękawa [cm]:</strong> {tailormadeorder.dimensions.sleevelenght}<br />
                                     <strong>Obwód rękawa [cm]:</strong> {tailormadeorder.dimensions.sleevecircumference}<br />
+                                    <strong>Obwód bioder [cm]:</strong> {tailormadeorder.dimensions.hipcircumference}<br />
                                 </p>
                             </div>
                         </li>

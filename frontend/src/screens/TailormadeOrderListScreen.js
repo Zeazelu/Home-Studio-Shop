@@ -60,7 +60,7 @@ export default function TailormadeOrderListScreen(props) {
                     ? tailormadeorder.deliveredAt.substring(0, 10)
                     : 'Nie'}
                 </td>
-                <td>Wysokość:{tailormadeorder.dimensions.height}cm<br/>Klatka piersiowa:{tailormadeorder.dimensions.chestcircumference}cm<br/>Ramiona:{tailormadeorder.dimensions.shoulderwidth}cm<br/>Kołnierz:{tailormadeorder.dimensions.collarcircumference}cm<br />Talia:{tailormadeorder.dimensions.waistcircumference}cm<br />Rękawy:{tailormadeorder.dimensions.sleevecircumference}cm<br /></td>
+                <td>Długość:{tailormadeorder.dimensions.height}cm<br/>Klatka piersiowa:{tailormadeorder.dimensions.chestcircumference}cm<br/>Kołnierz:{tailormadeorder.dimensions.collarcircumference}cm<br />Ramiona:{tailormadeorder.dimensions.shoulderwidth}cm<br/>Talia:{tailormadeorder.dimensions.waistcircumference}cm<br />Długość rękawa:{tailormadeorder.dimensions.sleevelenght}cm<br />Obwód rękawa:{tailormadeorder.dimensions.sleevecircumference}cm<br />Obwód bioder:{tailormadeorder.dimensions.hipcircumference}cm<br /></td>
                 <td>
                   <button
                     type="button"

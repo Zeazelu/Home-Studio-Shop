@@ -460,7 +460,7 @@ active {
   transform: scale(1.2);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
   .Header {
     grid-template-areas: "logo bars" "nav nav";
   }

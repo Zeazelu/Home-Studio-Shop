@@ -173,11 +173,11 @@ export default function ProductScreen(props) {
                         onChange={(e) => setRating(e.target.value)}
                       >
                         <option value="">Wybierz...</option>
-                        <option value="1">1- Chujowy</option>
-                        <option value="2">2- niezły</option>
-                        <option value="3">3- Spoko</option>
-                        <option value="4">4- Bardzo dobry</option>
-                        <option value="5">5- Zajebisty</option>
+                        <option value="1">1- Bardzo słaby</option>
+                        <option value="2">2- Słaby</option>
+                        <option value="3">3- Średni</option>
+                        <option value="4">4- Dobry</option>
+                        <option value="5">5- Bardzo dobry</option>
                       </select>
                     </div>
                     <div>

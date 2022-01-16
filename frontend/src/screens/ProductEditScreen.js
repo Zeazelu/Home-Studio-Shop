@@ -100,7 +100,7 @@ export default function ProductEditScreen(props) {
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="Wpisz nazwę..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
@@ -110,7 +110,7 @@ export default function ProductEditScreen(props) {
               <input
                 type="file"
                 id="imageFile"
-                label="Choose Image"
+                label="Wybierz obraz"
                 onChange={uploadFileHandler}
               ></input>
               {loadingUpload && <LoadingBox></LoadingBox>}
@@ -123,7 +123,7 @@ export default function ProductEditScreen(props) {
               <input
                 id="price"
                 type="text"
-                placeholder="Enter price"
+                placeholder="Wpisz cenę..."
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></input>
@@ -133,7 +133,7 @@ export default function ProductEditScreen(props) {
               <input
                 id="image"
                 type="text"
-                placeholder="Enter image"
+                placeholder="Wybierz obraz..."
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></input>
@@ -143,7 +143,7 @@ export default function ProductEditScreen(props) {
               <input
                 id="category"
                 type="text"
-                placeholder="Enter category"
+                placeholder="Wpisz kategorię..."
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></input>
@@ -153,7 +153,7 @@ export default function ProductEditScreen(props) {
               <input
                 id="brand"
                 type="text"
-                placeholder="Enter brand"
+                placeholder="Wpisz markę..."
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               ></input>
@@ -163,7 +163,7 @@ export default function ProductEditScreen(props) {
               <input
                 id="countInStock"
                 type="text"
-                placeholder="Enter countInStock"
+                placeholder="Wpisz ilość w magazynie..."
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
               ></input>
@@ -174,7 +174,7 @@ export default function ProductEditScreen(props) {
                 id="description"
                 rows="3"
                 type="text"
-                placeholder="Enter description"
+                placeholder="Wpisz opis..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
